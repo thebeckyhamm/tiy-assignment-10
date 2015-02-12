@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet/less" type="text/css" href="styles.less">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.3.1/less.min.js"></script>
+    <script src="main.js"></script>
+    <title>TIY Assignment 10: Mock Etsy</title>
+</head>
+<body>
+    <header class="header flex-center">
+        <div class="inner-header flex-center space-between">
+            <div class="flex-center">
+                <div class="logo">
+                    <img src="images/etsylogo.png" alt="etsy">
+                </div>
+                <form action="" class="search">
+                    <div class="input-group">
+                        <input type="text" class="search-input"><button type="submit" class="btn btn-blue btn-search"><strong>Search</strong></button>
+                    </div>
+                </form>
+                <button class="btn btn-default btn-dropdown">Browse</button>
+            </div>
+            <div class="flex-center">
+                <div class="header-links">
+                    <a href="">Help</a>
+                    <a href="">Register</a>
+                    <a href="" class="link-blue-outline">Sign In</a>
+                </div>
+                <div class="header-cart">
+                    <img src="images/cart.svg" alt="">
+                    <span class="text-muted">Cart</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="main">
+        <div class="filters">
+            <h4><strong>Show results for:</strong></h4>
+            <div class="filters-inner">
+                <h4><strong>Item Type</strong></h4>
+                <div class="radio">
+                    <span class="radio-button filled"></span>
+                    <span><strong>All Items</strong></span>
+                </div>
+                <div class="radio">
+                    <span class="radio-button"></span>
+                    <a href="">Handmade</a>
+                </div>                
+                <div class="radio">
+                    <span class="radio-button"></span>
+                    <a href="">Vintage</a>
+                </div>                
+                <div class="radio">
+                    <span class="radio-button"></span>
+                    <a href="">Craft Supplies</a>
+                </div>
+
+            <hr>
+
+            <h4><strong>Categories</strong></h4>
+            <a href=""><strong>Handmade</strong></a>
+            <ul class="list">
+                <li><a href="">Glass</a></li>
+                <li><a href="">Weddings</a></li>
+                <li><a href="">Housewares</a></li>
+                <li><a href="">Accessories</a></li>
+                <li><a href="">Art</a></li>
+                <li><a href="">Jewelry</a></li>
+                <li><a href="">Ceramics and Pottery</a></li>
+                <li><a href="">Clothing</a></li>
+            </ul>
+            <a href=""><strong>Vintage</strong></a>
+            <ul class="list">
+                <li><a href="">Collectible</a></li>
+                <li><a href="">Serving</a></li>
+                <li><a href="">Housewares</a></li>
+                <li><a href="">Antique</a></li>
+            </ul>
+            <a href=""><strong>Craft Supplies</strong></a>
+            <ul class="list">
+                <li><a href="">Bead</a></li>
+                <li><a href="">Commercial</a></li>
+                <li><a href="">Scrapbooking</a></li>
+                <li><a href="">Fabric</a></li>
+            </ul>
+
+            <hr>
+
+            <h4><strong>Price Filter</strong></h4>
+            <input type="text" class="input-sm" placeholder="$ min" />
+            <span>to</span>
+            <input type="text" class="input-sm" placeholder="$ max" />
+            <button class="btn btn-gray">&#9658;</button>
+
+            <hr>
+
+            <h4><strong>Filter by Color</strong></h4>
+            <span class="square red"></span>
+            <span class="square orange"></span>
+            <span class="square yellow"></span>
+            <span class="square green"></span>
+            <span class="square blue"></span>
+            <span class="square purple"></span>
+            <span class="square black"></span>
+            <span class="square white"></span>
+
+            <hr>
+
+            <h4><strong>Ordering Options</strong></h4>
+            <div class="checkbox">
+                <span class="checkbox-button"></span>
+                <a href="">Accepts Etsy Gift Cards</a>
+            </div>
+            <div class="checkbox">
+                <span class="checkbox-button"></span>
+                <a href="">Customizable</a>
+            </div>
+
+            <hr>
+
+            <h4><strong>Shop Location</strong></h4>
+            <div class="radio">
+                <span class="radio-button filled"></span>
+                <span><strong>Anywhere</strong></span>
+            </div>
+            <div class="radio">
+                <span class="radio-button"></span>
+                <a href="">United States</a>
+            </div>  
+            <a href="">Choose a custom location</a> 
+
+            <hr>
+
+            <div class="clearfix">
+                <h4 class="pull-left"><strong>Ships To</strong></h4>
+                <span class="pull-right"><a href="">Clear</a></span>
+            </div>    
+            <select name="ship-location" id="">
+                <option value="">United States</option>
+            </select> 
+            </div>
+        
+        </div>
+        <div class="products">
+            <div class="clearfix">
+                <h4 class="search-results pull-left">
+                    <strong>
+                        "<span class="search-words"></span>""
+                    </strong>
+                    <span>We found <span class="search-number">0</span> items!</span>
+                </h4>
+                <h4 class="sort-results pull-right">
+                    <span>Sort by: <a href="">Relevancy</a></span>
+                </h4>
+            </div>
+            <div class="product">
+                <a href="">
+                    <img src="https://img1.etsystatic.com/056/0/8456494/il_340x270.712696183_gnhp.jpg" alt="" class="product-image">
+                </a>
+                <a href="">
+                    <span class="product-name">Personalized Whiskey Barrel_1028</span>
+                </a>
+                <div class="clearfix">
+                    <a href="">
+                        <span class="product-shop">RCPersonalizedGifts</span>
+                    </a>
+                    <span class="product-price">$49.99 USD</span>
+                </div>
+
+            </div>
+            <div class="pagination">
+                <span>1</span>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a href="">4</a>
+                <a href="">5</a>
+                <a href="">6</a>
+                <a href="">7</a>
+                <a href="">8</a>
+                <span>...</span>
+                <a href="">250</a>
+            </div>
+            <div class="forward-back">
+                <button class="btn btn-blue btn-round"></button>
+                <button class="btn btn-blue btn-round btn-disabled"></button>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="clearfix">
+            <div class="footer-column">
+                <h4>Turn Your Passion Into a Business</h4>
+                <button class="btn btn-blue">Open a Shop</button>
+                <br>
+                <h4>Sell on Etsy</h4>
+                <a href="">Seller Handbook</a>
+                <a href="">Etsy Credit Card Reader</a>
+            </div>
+            <div class="footer-column">
+                <h4>Join the Community</h4>
+                <a href="#">Teams</a>
+                <a href="#">Forums</a>
+                <a href="#">Upcoming Events</a>
+                <a href="#">Affiliates</a>
+            </div>
+            <div class="footer-column">
+                <h4>Discover and Shop</h4>
+                <a href="#">Gift Cards</a>
+                <a href="#">Blog</a>
+                <a href="#">Tastemakers</a>
+                <a href="#">Mobile Apps</a>
+                <a href="#">Gift Registries</a>
+                <a href="#">Wholesale</a>
+            </div>
+            <div class="footer-column">
+                <h4>Get to Know Us</h4>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+                <a href="#">Developers</a>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Etsy</h4>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Pinterest</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer-configs">
+            <div class="link-group pull-left">
+                <a href="#" class="link-outline">United States</a>
+                <a href="#" class="link-outline">English (US)</a>
+                <a href="#" class="link-outline">$ USD</a>
+            </div>
+            <div class="pull-right">
+                <button class="btn-blue"><strong>Help</strong></button>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <span class="text-muted">&copy; 2015 Etsy, Inc.</span>
+            <a href="#" class="link-muted">Terms</a>
+            <a href="#" class="link-muted">Privacy</a>
+            <a href="#" class="link-muted">Copyright</a>
+            <a href="#" class="link-muted">Interest-based Ads</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,239 @@
+@import "normalize.css";
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+// Add Images from icons
+
+
+@bg: #F5F5F1;
+@blue: #0192B5;
+@light-gray: #E5E5E5;
+@med-gray: #BCB7B3;
+@dark-gray: #666666;
+@border-radius: 3px;
+
+body {
+    background-color: @bg;
+    color: @dark-gray;
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 14px;
+}
+
+p, a, li {
+    line-height: 1.7;
+}
+
+a {
+    color: @blue;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+hr {
+    background-color: darken(@light-gray, 5%);
+    border: none;
+    height: 1px;
+    margin: 1rem 0;
+}
+
+ul {
+    margin: 0 0 .3em 0;
+    padding: 0;
+    li {
+        list-style: none;
+        text-indent: 1em;
+    }
+}
+
+.link-blue-outline {
+    border: 1px solid @blue;
+    border-radius: @border-radius;
+    height: 2rem;
+    padding: .5em;
+}
+
+.text-muted {
+    color: @dark-gray;  
+}
+
+h4 {
+    font-weight: normal;
+    margin: 0 0 1em 0;
+}
+
+input {
+    border: 1px solid lighten(@med-gray, 5%);
+    border-radius: @border-radius;
+    box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, .1);
+    height: 2rem;
+    line-height: 1;
+    padding: .5em;
+}
+
+.input-group {
+    input {
+        border-radius: @border-radius 0 0 @border-radius; 
+    }
+    .btn {
+        margin-left: -1px;
+        border-radius: 0 @border-radius @border-radius 0;
+    }
+}
+
+.input-sm {
+    width: 3.5rem;
+}
+
+.btn {
+    background: none;
+    border: none;
+    border-radius: @border-radius;
+    height: 2rem;
+    padding: .5em;
+    position: relative;
+}
+
+.btn-default {
+    border: 1px solid @light-gray;
+    color: @dark-gray;
+}
+
+.btn-blue {
+    background: @blue;
+    color: white;
+}
+
+.btn-gray {
+    background-color: @light-gray;
+    border: 1px solid lighten(@med-gray, 5%);
+    min-width: 3rem;
+}
+
+.btn-dropdown {
+    padding-right: 1.5em;
+    &:after {
+        content: "\25BC";
+        color: @med-gray;
+        font-size: 10px;
+        position: absolute;
+        top: 30%;
+        right: .5em;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.inner-header, .main, .footer {
+    margin: 0 auto;
+    width: 980px;
+}
+
+.header {
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1) ,0 0 0 1px rgba(0, 0, 0, 0.05);
+    height: 80px;
+    margin-bottom: 1.7em;
+    .logo {
+        display: inline-block;
+        margin-right: 1.5em;
+        img {
+            width: 75px;
+        }
+    }
+    .search {
+        display: inline-block;
+        margin-right: 1.5em;
+        input {
+            width: 260px;
+        }
+    }
+    .header-links {
+        border-right: 1px solid @light-gray;
+        padding: 1rem 0;
+    }
+    .header-links a {
+        margin: 0 .8em;
+    }
+    .header-cart {
+        font-size: 12px;    
+        padding: 0 .8em;
+        img {
+            display: block;
+            padding-bottom: .5em; 
+        }
+    }
+
+}
+
+.filters {
+    float: left;
+    font-size: 13px;
+    padding-right: 2em;
+    width: 25%;
+}
+
+.filters-inner {
+    background-color: white;
+    border: 1px solid @light-gray;
+    border-radius: @border-radius;
+    padding: 1em;
+}
+
+.radio-button {
+    border: 1px solid @med-gray;
+    border-radius: 57%;
+    box-shadow: inset 0 0 5px 0 @light-gray; 
+    display: inline-block;
+    height: 18px;
+    margin-right: .4em;
+    position: relative;
+    width: 18px;
+    vertical-align: bottom;
+    &:hover {
+        border: 1px solid darken(@med-gray, 5%);
+    }
+}
+
+.radio {
+    margin-bottom: .6em;
+}
+
+.radio-button.filled {
+    background-color: @blue;
+    box-shadow: inset 0 0 0 3px white; //awesome trick, didn't know about this one
+}
+
+.products {
+    float: left;
+    width:70%;
+}
+
+
+
+
+
