@@ -1,0 +1,40 @@
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+
+.w100 {
+    width: 100%;
+}
+
+.down-arrow {
+    padding-right: 1.5em;
+    position: relative;
+    &:after {
+        content: "\25BC";
+        color: @med-gray;
+        font-size: 10px;
+        position: absolute;
+        top: .3em;
+        right: .5em;
+    }    
+}
