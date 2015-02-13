@@ -109,6 +109,11 @@ body {
     float: left;
     font-size: 13px;
     width:75%;
+
+}
+
+.search-words {
+    display: none;
 }
 
 .sort-results a {
@@ -116,6 +121,17 @@ body {
 }
 
 .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    h1 {
+        color: @blue;
+        margin-top: 3em;
+        min-height: 500px;
+        text-align: center;
+        width: 100%;
+    }
 }
 
 
@@ -123,22 +139,24 @@ body {
     background-color: white;
     border: 1px solid @light-gray;
     border-radius: @border-radius;
-    float: left;
     font-size: 12px;
     line-height: 1;
-    margin-right: 2.8em;
+    margin-bottom: 2em;
     padding: .35em;
     position: relative;
     width: 222px;
-    &:nth-child(3) {
-        margin-right: 0;
-    }
     &:hover {
-        box-shadow: 0 0 3px 0 fade(black, 10%), 0 0 0 1px fade(black, 10%);
+        box-shadow: 0 1px 3px 0 fade(black, 10%);
     }
-    img {
-        width: 100%;
+    .product-image {
+        display: block;
+        width: 212px;
+        height: 170px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
     }
+
     .link-muted {
         line-height: 1.3;
     }
@@ -204,6 +222,11 @@ body {
         display: block;
         line-height: 2;
     }
+    img {
+        margin-right: 3px;
+        max-width: 15px;
+        vertical-align: middle;
+    }
 }
 
 .footer-configs {
@@ -237,6 +260,16 @@ body {
     span, a {
         padding: .5em;
     }
+}
+
+.overlay {
+    background-color: fade(black, 20%);
+    color: @blue;
+    font-size: 4em;
+    height: 800px;
+    padding: 2em;
+    text-align: center;
+    width: 100%;
 }
 
 
