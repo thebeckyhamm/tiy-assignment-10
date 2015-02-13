@@ -128,6 +128,7 @@ body {
     line-height: 1;
     margin-right: 2.8em;
     padding: .35em;
+    position: relative;
     width: 222px;
     &:nth-child(3) {
         margin-right: 0;
@@ -153,6 +154,20 @@ body {
     }
     .product-price {
         color: @green;
+    }
+    &:first-child, &:nth-child(2), &:nth-child(3) {
+        &:after {
+            content: "Ad";
+            background-color: fade(white, 70%);
+            border-radius: 2px;
+            padding: .25em .4em;
+            position: absolute;
+            top: .75em;
+            left: .75em;
+
+            
+        }
+
     }
 }
 
