@@ -3,6 +3,8 @@ var keywordList;
 var productsContainer;
 var searchBox;
 var countProducts;
+var cleanedData;
+var filteredData;
 
 var myTemplate = _.template(
     "<div class=\"product\">" +
@@ -38,9 +40,9 @@ var capitalizeFirstLetter =  function(string) {
 };
 
 
+// truncate titles and shops; capitalize titles
 var cleanUpData = function(data) {
-    var productsContainer = $(".products");
-    productsContainer.empty();
+    cleanedData = [];
     data.results.forEach(function(product) {
         product.title = capitalizeFirstLetter(product.title);
 
@@ -51,9 +53,22 @@ var cleanUpData = function(data) {
         if(product.Shop.shop_name.length > 20) {
             product.Shop.shop_name = product.Shop.shop_name.substring(0, 20) + "...";
         }
-        productsContainer.append(myTemplate(product));
+        cleanedData.push(product);
 
     });
+
+
+};
+
+
+// add whatever data (filtered or not) to page
+var updateData = function(data) {
+    var productsContainer = $(".products");
+    productsContainer.empty();
+   
+    data.forEach(function(product) {
+        productsContainer.append(myTemplate(product)); 
+   });
 };
 
 
@@ -87,6 +102,12 @@ $(function(){
         });
     };
 
+    // when submitted,
+    // * get keywords and add overlay
+    // * count the number of products returned
+    // * clean up the data
+    // * add data to page
+    // * display search term and # of results
     $(".search").on("submit", function(event){
         event.preventDefault();
 
@@ -96,14 +117,44 @@ $(function(){
         getData(keywords, function(data){
             var countProducts = data.results.length;
             cleanUpData(data);
+            updateData(cleanedData);
             keywordList.html("\"<strong>" + keywords + "</strong>\" We got " + countProducts + " results!");
 
         });
     });
 
 
+    // when category clicked,
+    // * get the data-name for the current element
+    //   and set to category
+    // * filter down based on if category matches 
+    //   category_path
+    // only works on already returned 25 items
+    $(".list").on("click", "a", function(event){
+        event.preventDefault();
+        var elem = event.currentTarget;
+        elem = $(elem);
+
+        var category = elem.data("name").toLowerCase();
+        category = capitalizeFirstLetter(category);
+        console.log(category);
+
+        filteredData = [];
+
+        filteredData = cleanedData.filter(function(product) {
+            return _.contains(product.category_path, category);
+        });
+
+        console.log(filteredData);
+
+        updateData(filteredData);
+
+    });
+
+
     getData(function(data){
         cleanUpData(data);
+        updateData(cleanedData);  
     });
 
 
