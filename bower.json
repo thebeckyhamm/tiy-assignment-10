@@ -1,0 +1,21 @@
+{
+  "name": "tiy-assignment-10",
+  "version": "0.0.0",
+  "homepage": "https://github.com/thebeckyhamm/tiy-assignment-10",
+  "authors": [
+    "Becky Hamm <becky@metricslice.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.7.0",
+    "jquery": "~2.1.3"
+  }
+}
