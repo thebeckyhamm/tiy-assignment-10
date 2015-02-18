@@ -1,4 +1,3 @@
-var keywords = {};
 var keywordList;
 var productsContainer;
 var searchBox;
@@ -78,21 +77,33 @@ $(function(){
     var keywordList = $(".search-results");
     var searchBox = $(".search-input");
     var productsContainer = $(".products");
+    var options = {
+        keywords: null,
+        page: 1,
+    };
 
-    var getData = function(keywords, callback) {
+    // getData({keywords: "whiskey", page: }, function(data){
+
+    // })
+
+    var getData = function(options, callback) {
         var params = {
             api_key: "7aru187n7uevb61x2e936hvz",
-            includes: "Images,Shop",
+            includes: "Images,Shop,Category",
             limit: 24
         };
 
-        if (!callback && typeof keywords === "function") {
-            callback = keywords;
-            keywords = null;
+        if (!callback && typeof options === "function") {
+            callback = options;
+            //options = null;
         }
 
-        if (keywords && keywords.length) {
-            params.keywords = keywords;
+        if (options.keywords) {
+            params.keywords = options.keywords;
+        }
+
+        if (options.page) {
+            params.page = options.page;
         }
 
         $.ajax("https://openapi.etsy.com/v2/listings/active.js", {
@@ -100,7 +111,12 @@ $(function(){
             dataType: "jsonp",
             success: callback
         });
+
     };
+
+    if (options.page === 1) {
+        $("#previous").addClass("btn-disabled");
+    }
 
     // when submitted,
     // * get keywords and add overlay
@@ -111,14 +127,15 @@ $(function(){
     $(".search").on("submit", function(event){
         event.preventDefault();
 
-        keywords = searchBox.val();
+        options.keywords = searchBox.val();
         productsContainer.html("<div class=\"overlay\">Searching...</div>");
 
-        getData(keywords, function(data){
-            var countProducts = data.results.length;
+        options.page = 1;
+        getData(options, function(data){
+            var countProducts = data.count;
             cleanUpData(data);
             updateData(cleanedData);
-            keywordList.html("\"<strong>" + keywords + "</strong>\" We got " + countProducts + " results!");
+            keywordList.html("Page " + options.page + ": \"<strong>" + options.keywords + "</strong>\" We got " + countProducts + " results!");
 
         });
     });
@@ -130,31 +147,77 @@ $(function(){
     // * filter down based on if category matches 
     //   category_path
     // only works on already returned 25 items
-    $(".list").on("click", "a", function(event){
+    // $(".list").on("click", "a", function(event){
+    //     event.preventDefault();
+    //     var elem = event.currentTarget;
+    //     elem = $(elem);
+
+    //     var category = elem.data("name").toLowerCase();
+    //     category = capitalizeFirstLetter(category);
+    //     console.log(category);
+
+    //     filteredData = [];
+
+    //     filteredData = cleanedData.filter(function(product) {
+    //         return _.contains(product.category_path, category);
+    //     });
+
+    //     console.log(filteredData);
+
+    //     updateData(filteredData);
+
+    // });
+
+    $("#next").on("click", function(event){
         event.preventDefault();
-        var elem = event.currentTarget;
-        elem = $(elem);
+        options.page++; 
+        getData(options, function(data){
+            var countProducts = data.count;
+            cleanUpData(data);
+            updateData(cleanedData);
+            if(typeof options.keywords === "string") {
+                keywordList.html("Page " + options.page + ": \"<strong>" + options.keywords + "</strong>\" We got " + countProducts + " results!");
+            }
+            else {
+                keywordList.html("Page " + options.page + ": We got " + countProducts + " results!");
+            }
+            $("#previous").removeClass("btn-disabled");
+            $("html, body").animate(
+                { scrollTop: 0 },"slow");
 
-        var category = elem.data("name").toLowerCase();
-        category = capitalizeFirstLetter(category);
-        console.log(category);
-
-        filteredData = [];
-
-        filteredData = cleanedData.filter(function(product) {
-            return _.contains(product.category_path, category);
         });
+    });
 
-        console.log(filteredData);
+    $("#previous").on("click", function(event){
+        event.preventDefault();
+        options.page--; 
+        getData(options, function(data){
+            var countProducts = data.count;
+            cleanUpData(data);
+            updateData(cleanedData);
+            if(typeof options.keywords === "string") {
+                keywordList.html("Page " + options.page + ": \"<strong>" + options.keywords + "</strong>\" We got " + countProducts + " results!");
+            }
+            else {
+                keywordList.html("Page " + options.page + ": We got " + countProducts + " results!");
+            }
 
-        updateData(filteredData);
+            if (options.page === 1) {
+                $("#previous").addClass("btn-disabled");
+            }
+            $("html, body").animate(
+                { scrollTop: 0 },"slow");
 
+        });
     });
 
 
     getData(function(data){
+        console.log(data);
         cleanUpData(data);
-        updateData(cleanedData);  
+        updateData(cleanedData); 
+        keywordList.html("Page " + options.page + ": We got " + data.count + " results!");
+
     });
 
 
